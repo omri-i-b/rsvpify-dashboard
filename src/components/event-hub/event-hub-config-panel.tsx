@@ -699,37 +699,37 @@ export default function EventHubConfigPanel() {
         title="Visitor filters"
         hint="Let visitors narrow the list themselves, in addition to the rules above."
       >
-        <div className="flex items-center justify-between py-1 pb-2.5">
+        <div
+          className="flex items-center justify-between py-1"
+          style={{ paddingBottom: letFilter ? 10 : 0 }}
+        >
           <span className="text-[13px] font-medium">Show filter bar</span>
           <Switch checked={letFilter} onCheckedChange={setLetFilter} />
         </div>
-        <div
-          style={{
-            opacity: letFilter ? 1 : 0.4,
-            pointerEvents: letFilter ? "auto" : "none",
-          }}
-        >
-          <FilterRow
-            label="Date range"
-            checked={filters.date}
-            onChange={(v) => setFilters((f) => ({ ...f, date: v }))}
-          />
-          <FilterRow
-            label="Tags"
-            checked={filters.tags}
-            onChange={(v) => setFilters((f) => ({ ...f, tags: v }))}
-          />
-          <FilterRow
-            label="Location"
-            checked={filters.location}
-            onChange={(v) => setFilters((f) => ({ ...f, location: v }))}
-          />
-          <FilterRow
-            label="Event type"
-            checked={filters.type}
-            onChange={(v) => setFilters((f) => ({ ...f, type: v }))}
-          />
-        </div>
+        {letFilter && (
+          <div>
+            <FilterRow
+              label="Date range"
+              checked={filters.date}
+              onChange={(v) => setFilters((f) => ({ ...f, date: v }))}
+            />
+            <FilterRow
+              label="Tags"
+              checked={filters.tags}
+              onChange={(v) => setFilters((f) => ({ ...f, tags: v }))}
+            />
+            <FilterRow
+              label="Location"
+              checked={filters.location}
+              onChange={(v) => setFilters((f) => ({ ...f, location: v }))}
+            />
+            <FilterRow
+              label="Event type"
+              checked={filters.type}
+              onChange={(v) => setFilters((f) => ({ ...f, type: v }))}
+            />
+          </div>
+        )}
       </Section>
     </div>
   );
